@@ -1,5 +1,7 @@
 #include<iostream>
 #include<fstream>
+#include<string>
+using namespace std;
 
 class shape
 {
@@ -48,7 +50,18 @@ public:
 
 int main(int argc, char const *argv[]) {
 
-    
+  ifstream in; ofstream out;
+  in.open("data.txt");
+
+  string line;
+
+  while(!in.eof())
+  {
+   (getline(in,line));
+   stringstream check(line);
+   string tokener;
+   while(getline())
+  }
 
 
 
