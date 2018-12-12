@@ -7,7 +7,8 @@ protected:
   int width,height;
   int radius;
   int base;
-
+public:
+  virtual int get_area()=0;
 
 };
 
@@ -41,11 +42,17 @@ public:
 
   int get_area()
   {
-    
+    return (base*height)/2;
   }
 };
 
 int main(int argc, char const *argv[]) {
+
+    
+
+
+
+
 
   return 0;
 }
