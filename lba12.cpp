@@ -7,13 +7,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 void streamer(string line);
+void save_to_file_cir(float,float,float);
+void save(char,float,float,float,float);
 
 class shape
 {
 protected:
-  int width,height;
-  int radius;
-  int base;
+  float width,height;
+  float radius;
+  float base;
 public:
   virtual int get_area()=0;
   virtual int get_perimeter()=0;
@@ -102,6 +104,7 @@ switch (line.front()) {
       circle c(stof(sub));
       c.get_area();
       c.get_perimeter();
+      save_to_file_cir(stof(sub),c.get_area(),c.get_perimeter());
     }
   break;
 
@@ -112,7 +115,9 @@ switch (line.front()) {
       base=sub.substr(pos+1);
       height=sub.substr(pos-3);
       triangle t(stof(height),stof(base));
+      save(line.front(),stof(height),stof(base),t.get_area(),t.get_perimeter());
     }
+    break;
   case 'r':
   {
     string height,width;
@@ -120,8 +125,25 @@ switch (line.front()) {
     width=sub.substr(pos+1);
     height=sub.substr(pos-3);
     rectangle r(stof(height),stof(width));
-
+    save(line.front(),stof(height),stof(width),r.get_area(),r.get_perimeter());
   }
 }
+}
+
+void save_to_file_cir(float radius,float area,float perimeter)
+{
+  ofstream out("output.txt",ios::app);
+  out<<"Circle "<<radius<<" "<<area<<" "<<perimeter<<endl;
+
+}
+void save(char type,float width,float height,float area,float perimeter)
+{
+  ofstream out("output.txt",ios::app);
+  switch (type) {
+    case 't':
+    out<<"Triangle "<<width<<" "<<height<<" "<<area<<" "<<perimeter<<endl;
+    case 'r':
+    out<<"Rectangle "<<width<<" "<<height<<" "<<area<<" "<<perimeter<<endl;
+  }
 
 }
