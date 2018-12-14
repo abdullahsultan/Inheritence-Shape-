@@ -100,16 +100,28 @@ switch (line.front()) {
   case 'c':
     {
       circle c(stof(sub));
-      cout<<"Area = "<<c.get_area()<<endl;
-      cout<<"Perimeter"<<c.get_perimeter()<<endl;
+      c.get_area();
+      c.get_perimeter();
     }
   break;
 
   case 't':
     {
-      
+      string height,base;
+      pos=sub.find(",");
+      base=sub.substr(pos+1);
+      height=sub.substr(pos-3);
+      triangle t(stof(height),stof(base));
     }
-//  case 'r':
+  case 'r':
+  {
+    string height,width;
+    pos=sub.find(",");
+    width=sub.substr(pos+1);
+    height=sub.substr(pos-3);
+    rectangle r(stof(height),stof(width));
+
+  }
 }
 
 }
